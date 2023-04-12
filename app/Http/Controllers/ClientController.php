@@ -73,4 +73,24 @@ class ClientController extends Controller
             return (new AppHelper())->responseMessageHandle(0, "Invalid Username or Password.");
         }
     }
+
+    public function getAllClientDetails() {
+
+        $client_details = Client::all();
+        $all_clients = [];
+
+        for($each_client = 0; $each_client < count($client_details); $each_client++) {
+            array_push(
+                $all_clients, 
+                [
+                    "first_name" => $client_details[$each_client]->first_name,
+                    "last_name" => $client_details[$each_client]->last_name,
+                    "mobile_number" => $client_details[$each_client]->mobile_number,
+                    "email" => $client_details[$each_client]->email,
+                ]
+            );
+        }
+
+        return (new AppHelper())->responseEntityHandle(200, "Operation Complete.", $all_clients);
+    }
 }

@@ -20,6 +20,8 @@ Route::post('client', [ClientController::class, 'addNewClientDetails']);
 
 Route::post('clientValidate', [ClientController::class, 'validateLoginClient']);
 
+Route::get('allClients', [ClientController::class, 'getAllClientDetails']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
