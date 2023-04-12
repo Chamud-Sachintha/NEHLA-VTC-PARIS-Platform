@@ -57,4 +57,20 @@ class ClientController extends Controller
             return (new AppHelper())->responseMessageHandle(0, "There is an Error Occur When Register Client.");
         }
     }
+
+    public function validateLoginClient(Request $clientLoginDetails) {
+
+        $client = Client::where(['email' => $clientLoginDetails->email])->first();
+
+        if ($client != null && Hash::check($clientLoginDetails->password, $client->password)) {
+            $data['first_name'] = $client->first_name;
+            $data['last_name'] = $client->last_name;
+            $data['mobile_number'] = $client->mobile_number;
+            $data['email'] = $client->email;
+            $token = $client->createToken(time())->plainTextToken;
+            return (new AppHelper())->responseEntityHandle(200, "Login Success", $data, $token);
+        } else {
+            return (new AppHelper())->responseMessageHandle(0, "Invalid Username or Password.");
+        }
+    }
 }

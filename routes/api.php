@@ -18,6 +18,8 @@ use App\Helpers\AppHelper;
 
 Route::post('client', [ClientController::class, 'addNewClientDetails']);
 
+Route::post('clientValidate', [ClientController::class, 'validateLoginClient']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

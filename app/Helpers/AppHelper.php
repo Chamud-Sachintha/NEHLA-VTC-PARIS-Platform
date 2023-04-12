@@ -12,11 +12,15 @@ class AppHelper {
         return (($data));
     }
 
-    public function responseEntityHandle($code, $msg, $response) {
+    public function responseEntityHandle($code, $msg, $response, $token = null) {
 
         $data['code'] = $code;
         $data['msg'] = $msg;
         $data['data'] = [$response];
+        
+        if ($token != null) {
+            $data['token'] = $token;
+        }
 
         return $data;
     }
