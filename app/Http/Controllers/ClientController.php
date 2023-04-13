@@ -93,4 +93,15 @@ class ClientController extends Controller
 
         return (new AppHelper())->responseEntityHandle(200, "Operation Complete.", $all_clients);
     }
+
+    public function clientEmailVarification(Request $request) {
+
+        $client = Client::where(['email' => $request->query('email')])->first();
+
+        if ($client != null) {
+            return (new AppHelper())->responseMessageHandle(0, "There is Already Email.");
+        } else {
+            return (new AppHelper())->responseMessageHandle(1, "New Email.");
+        }
+    }
 }
