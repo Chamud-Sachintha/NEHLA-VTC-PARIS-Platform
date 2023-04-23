@@ -17,7 +17,7 @@ class DestinationController extends Controller
                 $all_destinations, 
                 [
                     "place_name" => $destination_list[$each_destination]->place_name,
-                    "destination" => $destination_list[$each_destination]->description,
+                    "destination" => $destination_list[$each_destination]->destination,
                     "price1" => $destination_list[$each_destination]->price1,
                     "price2" => $destination_list[$each_destination]->price2,
                     "price3" => $destination_list[$each_destination]->price3
