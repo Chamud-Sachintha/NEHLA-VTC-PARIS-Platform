@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\DestinationController;
 use App\Helpers\AppHelper;
 
 /*
@@ -26,6 +27,8 @@ Route::get('allClients', [ClientController::class, 'getAllClientDetails']);
 Route::get('clientEmailVarification', [ClientController::class, 'clientEmailVarification']);
 
 Route::post('createContactMessage', [ContactMessageController::class, 'addNewContactMessageFromClient']);
+
+Route::get('allDestinations', [DestinationController::class, 'getAllDestinations']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
