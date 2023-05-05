@@ -16,6 +16,7 @@ class DestinationController extends Controller
             array_push(
                 $all_destinations, 
                 [
+                    "id" => $destination_list[$each_destination]->id,
                     "place_name" => $destination_list[$each_destination]->place_name,
                     "description" => $destination_list[$each_destination]->description,
                     "price1" => $destination_list[$each_destination]->price1,
