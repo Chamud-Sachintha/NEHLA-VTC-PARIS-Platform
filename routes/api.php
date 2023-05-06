@@ -30,6 +30,8 @@ Route::post('createContactMessage', [ContactMessageController::class, 'addNewCon
 
 Route::get('allDestinations', [DestinationController::class, 'getAllDestinations']);
 
+Route::get('destinationById', [DestinationController::class, 'getDestinationById']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
