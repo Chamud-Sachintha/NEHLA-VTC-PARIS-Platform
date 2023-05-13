@@ -53,4 +53,33 @@ class DestinationController extends Controller
             return (new AppHelper())->responseMessageHandle(200, "There is No Destination Available.");
         }
     }
+
+    public function getDestinationPriceByPassengers(Request $request) {
+
+        $destinationId = $request->query('destinationId');
+        $passengerCountIdx = $request->query('passengerCountIdx');
+
+        if (empty($destinationId) || $destinationId == null) {
+            return (new AppHelper())->responseMessageHandle(500, "Destination Id is Required.");
+        }
+
+        if (empty($passengerCountIdx) || $passengerCountIdx == null) {
+            return (new AppHelper())->responseMessageHandle(500, "Passenger Cuount ID is Required.");
+        }
+
+        $destination_result = Destination::where(['id' => $destinationId])->first();
+
+        if ($destination_result != null && $passengerCountIdx == 1) {
+            $data['price'] = $destination_result['price1'];
+            return (new AppHelper())->responseEntityHandle(200, "Operation Complete", $data);
+        } else if ($destination_result != null && $passengerCountIdx == 2) {
+            $data['price'] = $destination_result['price2'];
+            return (new AppHelper())->responseEntityHandle(200, "Operation Complete", $data);
+        } else if ($destination_result != null && $passengerCountIdx == 3) {
+            $data['price'] = $destination_result['price3'];
+            return (new AppHelper())->responseEntityHandle(200, "Operation Complete", $data);
+        } else {
+            return (new AppHelper())->responseMessageHandle(500, "Invalid Destination Selected.");
+        }
+    }
 }

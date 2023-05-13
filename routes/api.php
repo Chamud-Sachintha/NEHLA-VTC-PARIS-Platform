@@ -32,6 +32,8 @@ Route::get('allDestinations', [DestinationController::class, 'getAllDestinations
 
 Route::get('destinationById', [DestinationController::class, 'getDestinationById']);
 
+Route::get('getDestinationPriceByPassengers', [DestinationController::class, 'getDestinationPriceByPassengers']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
