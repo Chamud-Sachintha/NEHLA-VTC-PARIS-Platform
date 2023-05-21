@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\StripeController;
 use App\Helpers\AppHelper;
 
 /*
@@ -33,6 +34,8 @@ Route::get('allDestinations', [DestinationController::class, 'getAllDestinations
 Route::get('destinationById', [DestinationController::class, 'getDestinationById']);
 
 Route::get('getDestinationPriceByPassengers', [DestinationController::class, 'getDestinationPriceByPassengers']);
+
+Route::post('payment-sheet', [StripeController::class, 'createPaymentSheet']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
