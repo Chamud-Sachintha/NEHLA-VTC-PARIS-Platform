@@ -37,6 +37,8 @@ Route::get('getDestinationPriceByPassengers', [DestinationController::class, 'ge
 
 Route::post('payment-sheet', [StripeController::class, 'createPaymentSheet']);
 
+Route::post('verify-payment', [StripeController::class, 'addPaymentSuccessLog']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
