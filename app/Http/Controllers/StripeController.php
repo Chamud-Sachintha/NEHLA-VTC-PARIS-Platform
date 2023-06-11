@@ -105,6 +105,8 @@ class StripeController extends Controller
             $payment_details->payment_details = "paid";
             $payment_details->order_status = 'pending';
             $payment_details->save();
+
+            return (new AppHelper())->responseMessageHandle(200, "Operation Complete.");
         } else {
             return (new AppHelper())->responseMessageHandle(404, "Not Matched Session.");
         }
